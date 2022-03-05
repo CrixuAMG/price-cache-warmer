@@ -1,4 +1,5 @@
 # php-price-cache-warmer
+
 Turbo boost fetching calculated prices
 
 - id
@@ -25,7 +26,8 @@ application.
 Command for generating migration/db_schema.xml?
 
 ```php
-    PriceCacheWarmer::withDriver('laravel')
+    PriceCacheWarmer::create()
+        ->withDriver('laravel')
         ->setItem($product)
         ->setTarget($user)
         ->cacheIsValidTill(Carbon::now()->addDays(2))

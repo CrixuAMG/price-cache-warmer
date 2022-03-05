@@ -11,4 +11,9 @@ class Magento2Driver extends AbstractTemplateDriver
     {
         // Collect data and cache
     }
+
+    public function fetchFromCache()
+    {
+        // TODO: Implement fetchFromCache() method.
+    }
 }

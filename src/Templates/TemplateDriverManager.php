@@ -6,27 +6,23 @@ use CrixuAMG\PriceCacheWarmer\Exceptions\DriverDoesNotExistException;
 use CrixuAMG\PriceCacheWarmer\Exceptions\InvalidDriverException;
 use CrixuAMG\PriceCacheWarmer\Templates\Laravel\LaravelDriver;
 use CrixuAMG\PriceCacheWarmer\Templates\Magento2\Magento2Driver;
-use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 
 class TemplateDriverManager
 {
     use Macroable;
 
-    public static function __callStatic(string $name, $arguments)
-    {
-        return self::driver($name);
-    }
-
     public static function driver(string $driver = 'default')
     {
-        $driver = Str::pascal($driver);
+        $driver = preg_replace_callback("/(?:^|_)([a-z])/", function ($matches) {
+            return strtoupper($matches[1]);
+        }, $driver);
         $methodName = "create{$driver}Driver";
-        if (!method_exists(get_called_class(new self), $methodName)) {
+        if (!is_callable([new self, $methodName])) {
             throw new DriverDoesNotExistException("Driver {$driver} does not exist");
         }
 
-        return (new self)->$methodName;
+        return (new self)->$methodName();
     }
 
     public function createDefaultDriver()

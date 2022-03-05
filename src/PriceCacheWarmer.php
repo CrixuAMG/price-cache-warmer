@@ -7,11 +7,16 @@ use CrixuAMG\PriceCacheWarmer\Templates\TemplateDriverManager;
 
 class PriceCacheWarmer
 {
-    private $driver;
-    private $validUntil;
-    private $priceInclVat;
-    private $priceExclVat;
-    private $vatPrice;
+    public $driver;
+    public $validUntil;
+    public $priceInclVat;
+    public $priceExclVat;
+    public $vatPrice;
+
+    public static function create()
+    {
+        return new self;
+    }
 
     public function withDriver(string $driver)
     {

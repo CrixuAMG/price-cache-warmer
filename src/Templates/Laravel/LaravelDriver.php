@@ -11,4 +11,9 @@ class LaravelDriver extends AbstractTemplateDriver
     {
         // Collect data and cache
     }
+
+    public function fetchFromCache()
+    {
+        // TODO: Implement fetchFromCache() method.
+    }
 }
