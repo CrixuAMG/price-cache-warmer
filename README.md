@@ -2,6 +2,8 @@
 
 Turbo boost fetching calculated prices
 
+[![PHP Composer](https://github.com/CrixuAMG/php-price-cache-warmer/actions/workflows/php.yml/badge.svg)](https://github.com/CrixuAMG/php-price-cache-warmer/actions/workflows/php.yml)
+
 - id
 - item_type
 - item_id
