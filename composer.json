@@ -1,5 +1,6 @@
 {
   "name": "crixuamg/php-price-cache-warmer",
+  "description": "Turbo boost fetching calculated prices",
   "type": "library",
   "license": "MIT",
   "autoload": {
