@@ -1,0 +1,19 @@
+{
+  "name": "crixuamg/php-price-cache-warmer",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "CrixuAMG\\PriceCacheWarmer\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Christian Kaal",
+      "email": "christiankaal@gmail.com"
+    }
+  ],
+  "require": {
+    "illuminate/support": "^8.83"
+  }
+}
