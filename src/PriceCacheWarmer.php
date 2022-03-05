@@ -8,10 +8,29 @@ use CrixuAMG\PriceCacheWarmer\Templates\TemplateDriverManager;
 class PriceCacheWarmer
 {
     public $driver;
-    public $validUntil;
-    public $priceInclVat;
-    public $priceExclVat;
-    public $vatPrice;
+
+    public function __get($name)
+    {
+        if (isset($this->driver->$name)) {
+            return $this->driver->$name;
+        }
+    }
+
+    public function __set($name, $value)
+    {
+        $this->driver->$name = $value;
+
+        return $this;
+    }
+
+    public function __call($name, $arguments)
+    {
+        if (is_callable([$this->driver, $name])) {
+            $this->driver->$name(...$arguments);
+
+            return $this;
+        }
+    }
 
     public static function create()
     {
@@ -28,48 +47,6 @@ class PriceCacheWarmer
     public function setDriver(TemplateDriverContract $driver)
     {
         $this->driver = $driver;
-
-        return $this;
-    }
-
-    public function setItem($item)
-    {
-        $this->driver->setItem($item);
-
-        return $this;
-    }
-
-    public function setTarget($target)
-    {
-        $this->driver->setTarget($target);
-
-        return $this;
-    }
-
-    public function cacheIsValidTill(\DateTime $validUntil = null)
-    {
-        $this->validUntil = $validUntil;
-
-        return $this;
-    }
-
-    public function setPriceIncludingVat($price)
-    {
-        $this->priceInclVat = $price;
-
-        return $this;
-    }
-
-    public function setPriceExcludingVat($price)
-    {
-        $this->priceExclVat = $price;
-
-        return $this;
-    }
-
-    public function setVatPrice($price)
-    {
-        $this->vatPrice = $price;
 
         return $this;
     }
