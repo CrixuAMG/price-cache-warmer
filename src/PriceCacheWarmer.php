@@ -11,9 +11,7 @@ class PriceCacheWarmer
 
     public function __get($name)
     {
-        if (isset($this->driver->$name)) {
-            return $this->driver->$name;
-        }
+        return $this->driver->$name;
     }
 
     public function __set($name, $value)
