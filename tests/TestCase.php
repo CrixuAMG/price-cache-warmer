@@ -30,6 +30,11 @@ abstract class TestCase extends Orchestra
                 {
                     // TODO: Implement fetchFromCache() method.
                 }
+
+                public function getMigrationName(): string
+                {
+                    // TODO: Implement getMigrationName() method.
+                }
             };
         });
 
