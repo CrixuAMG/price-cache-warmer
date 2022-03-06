@@ -11,4 +11,8 @@ interface TemplateDriverContract
     public function cache(PriceCacheWarmer $priceCacheWarmer, callable $callback);
 
     public function fetchFromCache();
+
+    public function getMigrationName(): string;
+
+    public function getMigrationPath(): string;
 }

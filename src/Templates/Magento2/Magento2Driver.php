@@ -10,4 +10,9 @@ class Magento2Driver extends AbstractTemplateDriver
     {
         // TODO: Implement fetchFromCache() method.
     }
+
+    public function getMigrationName(): string
+    {
+        return 'db_schema.xml';
+    }
 }

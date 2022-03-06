@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 
 abstract class AbstractTemplateDriver implements TemplateDriverContract
 {
+    protected $driverPath;
+
     public $target;
     public $item;
     public $validUntill;
@@ -104,5 +106,10 @@ abstract class AbstractTemplateDriver implements TemplateDriverContract
         $this->vatPrice = $price;
 
         return $this;
+    }
+
+    public function getMigrationPath(): string
+    {
+        return sprintf("%s/%s/Publishes/migration", __DIR__, $this->driverPath);
     }
 }
