@@ -30,16 +30,13 @@ class PriceCacheWarmer
         }
     }
 
-    public static function create()
+    public static function withDriver(string $driver)
     {
-        return new self;
-    }
+        $instance = new self;
 
-    public function withDriver(string $driver)
-    {
-        $this->driver = TemplateDriverManager::driver($driver);
+        $instance->driver = TemplateDriverManager::driver($driver);
 
-        return $this;
+        return $instance;
     }
 
     public function setDriver(TemplateDriverContract $driver)

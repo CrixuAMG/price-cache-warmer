@@ -25,11 +25,14 @@ Drivers would be a great addition, allowing for a one package solution for Magen
 repositories. A default could be set, implementing an interface that can be targeted in the DI container of the
 application.
 
-Command for generating migration/db_schema.xml?
+- [x] Command for adding migration to the project
+- [] Abstract drivers to separate packages
+- [] Fully working Laravel implementation
+- [] Fully working Magento 2 implementation
+- [] Tests for all basic functions, using a dynamic test driver
 
 ```php
-    PriceCacheWarmer::create()
-        ->withDriver('laravel')
+    PriceCacheWarmer::withDriver('laravel')
         ->setItem($product)
         ->setTarget($user)
         ->cacheIsValidTill(Carbon::now()->addDays(2))
