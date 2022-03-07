@@ -63,7 +63,11 @@ abstract class AbstractTemplateDriver implements TemplateDriverContract
             return $cachedData;
         }
 
-        return call_user_func($callback, $priceCacheWarmer);
+        $result = call_user_func($callback, $priceCacheWarmer);
+
+        $this->driver->insertIntoCache($result);
+
+        return $result;
     }
 
     public function setTarget($target)

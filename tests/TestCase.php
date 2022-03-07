@@ -5,14 +5,13 @@ namespace CrixuAMG\PriceCacheWarmer\Test;
 use CrixuAMG\PriceCacheWarmer\PriceCacheWarmer;
 use CrixuAMG\PriceCacheWarmer\Templates\AbstractTemplateDriver;
 use CrixuAMG\PriceCacheWarmer\Templates\TemplateDriverManager;
-use Orchestra\Testbench\TestCase as Orchestra;
 
 /**
  * Class TestCase
  *
  * @package CrixuAMG\PriceCacheWarmer\Test
  */
-abstract class TestCase extends Orchestra
+abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
      *
@@ -34,6 +33,11 @@ abstract class TestCase extends Orchestra
                 public function getMigrationName(): string
                 {
                     // TODO: Implement getMigrationName() method.
+                }
+
+                public function insertIntoCache(): bool
+                {
+                    // TODO: Implement insertIntoCache() method.
                 }
             };
         });

@@ -12,6 +12,8 @@ interface TemplateDriverContract
 
     public function fetchFromCache();
 
+    public function insertIntoCache(): bool;
+
     public function getMigrationName(): string;
 
     public function getMigrationPath(): string;
