@@ -18,4 +18,9 @@ class LaravelDriver extends AbstractTemplateDriver
         $date = date('Y_m_d_His');
         return "{$date}_create_price_cache_table.php";
     }
+
+    public function insertIntoCache(): bool
+    {
+        // TODO: Implement insertIntoCache() method.
+    }
 }

@@ -9,8 +9,6 @@ use Illuminate\Support\Str;
 
 abstract class AbstractTemplateDriver implements TemplateDriverContract
 {
-    protected $driverPath;
-
     public $target;
     public $item;
     public $validUntill;
@@ -18,6 +16,7 @@ abstract class AbstractTemplateDriver implements TemplateDriverContract
     public $priceExclVat;
     public $vatPrice;
     public $customData;
+    protected $driverPath;
 
     public function __get($name)
     {

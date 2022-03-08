@@ -27,17 +27,6 @@ trait Macroable
     }
 
     /**
-     * Checks if macro is registered.
-     *
-     * @param  string  $name
-     * @return bool
-     */
-    public static function hasMacro(string $name)
-    {
-        return isset(static::$macros[$name]);
-    }
-
-    /**
      * Dynamically handle calls to the class.
      *
      * @param  string  $method
@@ -49,20 +38,6 @@ trait Macroable
     public static function __callStatic(string $method, array $parameters)
     {
         return static::callMacro($method, $parameters);
-    }
-
-    /**
-     * Dynamically handle calls to the class.
-     *
-     * @param  string  $method
-     * @param  array  $parameters
-     * @return mixed
-     *
-     * @throws \BadMethodCallException
-     */
-    public function __call(string $method, array $parameters)
-    {
-        return static::callMacro($method, $parameters, $this);
     }
 
     /**
@@ -88,5 +63,30 @@ trait Macroable
         }
 
         return $macro(...$parameters);
+    }
+
+    /**
+     * Checks if macro is registered.
+     *
+     * @param  string  $name
+     * @return bool
+     */
+    public static function hasMacro(string $name)
+    {
+        return isset(static::$macros[$name]);
+    }
+
+    /**
+     * Dynamically handle calls to the class.
+     *
+     * @param  string  $method
+     * @param  array  $parameters
+     * @return mixed
+     *
+     * @throws \BadMethodCallException
+     */
+    public function __call(string $method, array $parameters)
+    {
+        return static::callMacro($method, $parameters, $this);
     }
 }
