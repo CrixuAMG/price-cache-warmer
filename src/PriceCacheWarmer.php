@@ -2,8 +2,7 @@
 
 namespace CrixuAMG\PriceCacheWarmer;
 
-use CrixuAMG\PriceCacheWarmer\Contracts\TemplateDriverContract;
-use CrixuAMG\PriceCacheWarmer\Templates\TemplateDriverManager;
+use CrixuAMG\PriceCacheWarmer\Drivers\DriverManager;
 
 /**
  *
@@ -32,7 +31,7 @@ class PriceCacheWarmer
     {
         $instance = self::getInstance();
 
-        $instance->driver = TemplateDriverManager::driver($driver);
+        $instance->driver = DriverManager::driver($driver);
 
         return $instance;
     }

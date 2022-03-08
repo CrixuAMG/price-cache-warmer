@@ -1,13 +1,13 @@
 <?php
 
-namespace CrixuAMG\PriceCacheWarmer\Templates;
+namespace CrixuAMG\PriceCacheWarmer\Drivers;
 
 use Carbon\Carbon;
 use CrixuAMG\PriceCacheWarmer\Contracts\TemplateDriverContract;
 use CrixuAMG\PriceCacheWarmer\PriceCacheWarmer;
 use Illuminate\Support\Str;
 
-abstract class AbstractTemplateDriver implements TemplateDriverContract
+abstract class AbstractDriver implements TemplateDriverContract
 {
     public $target;
     public $item;

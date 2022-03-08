@@ -3,8 +3,8 @@
 namespace CrixuAMG\PriceCacheWarmer\Test\Unit;
 
 use Carbon\Carbon;
+use CrixuAMG\PriceCacheWarmer\Drivers\AbstractDriver;
 use CrixuAMG\PriceCacheWarmer\PriceCacheWarmer;
-use CrixuAMG\PriceCacheWarmer\Templates\AbstractTemplateDriver;
 use CrixuAMG\PriceCacheWarmer\Test\TestCase;
 use DateInterval;
 use DateTime;
@@ -16,7 +16,7 @@ class BaseTest extends TestCase
     {
         $driver = PriceCacheWarmer::withDriver('test')->driver;
 
-        $this->assertInstanceOf(AbstractTemplateDriver::class, $driver);
+        $this->assertInstanceOf(AbstractDriver::class, $driver);
     }
 
     /** @test */

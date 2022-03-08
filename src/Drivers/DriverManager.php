@@ -1,14 +1,13 @@
 <?php
 
-namespace CrixuAMG\PriceCacheWarmer\Templates;
+namespace CrixuAMG\PriceCacheWarmer\Drivers;
 
 use CrixuAMG\PriceCacheWarmer\Exceptions\DriverDoesNotExistException;
 use CrixuAMG\PriceCacheWarmer\Exceptions\InvalidDriverException;
-use CrixuAMG\PriceCacheWarmer\Templates\Laravel\LaravelDriver;
-use CrixuAMG\PriceCacheWarmer\Templates\Magento2\Magento2Driver;
+use CrixuAMG\PriceCacheWarmer\Laravel\LaravelDriver;
 use CrixuAMG\PriceCacheWarmer\Traits\Macroable;
 
-class TemplateDriverManager
+class DriverManager
 {
     use Macroable;
 
@@ -35,8 +34,8 @@ class TemplateDriverManager
         return new LaravelDriver();
     }
 
-    public function createMagento2Driver()
-    {
-        return new Magento2Driver();
-    }
+//    public function createMagento2Driver()
+//    {
+//        return new Magento2Driver();
+//    }
 }

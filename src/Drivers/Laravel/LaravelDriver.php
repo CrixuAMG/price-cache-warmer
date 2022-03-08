@@ -1,8 +1,8 @@
 <?php
 
-namespace CrixuAMG\PriceCacheWarmer\Templates\Laravel;
+namespace CrixuAMG\PriceCacheWarmer\Laravel;
 
-use CrixuAMG\PriceCacheWarmer\Templates\AbstractTemplateDriver;
+use CrixuAMG\PriceCacheWarmer\AbstractTemplateDriver;
 
 class LaravelDriver extends AbstractTemplateDriver
 {

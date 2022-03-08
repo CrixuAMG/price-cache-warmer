@@ -2,7 +2,7 @@
 
 namespace CrixuAMG\PriceCacheWarmer\Console\Commands;
 
-use CrixuAMG\PriceCacheWarmer\Templates\TemplateDriverManager;
+use CrixuAMG\PriceCacheWarmer\DriverManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -21,7 +21,7 @@ class PublishMigrationCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $driver = TemplateDriverManager::driver($input->getArgument('driver'));
+        $driver = DriverManager::driver($input->getArgument('driver'));
 
         $migrationPath = $driver->getMigrationPath();
 
