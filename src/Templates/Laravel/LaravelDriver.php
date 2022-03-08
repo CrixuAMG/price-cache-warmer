@@ -2,18 +2,25 @@
 
 namespace CrixuAMG\PriceCacheWarmer\Templates\Laravel;
 
-use CrixuAMG\PriceCacheWarmer\PriceCacheWarmer;
 use CrixuAMG\PriceCacheWarmer\Templates\AbstractTemplateDriver;
 
 class LaravelDriver extends AbstractTemplateDriver
 {
-    public function cache(PriceCacheWarmer $priceCacheWarmer, callable $callback): void
-    {
-        // Collect data and cache
-    }
+    protected $driverPath = 'Laravel';
 
     public function fetchFromCache()
     {
         // TODO: Implement fetchFromCache() method.
+    }
+
+    public function getMigrationName(): string
+    {
+        $date = date('Y_m_d_His');
+        return "{$date}_create_price_cache_table.php";
+    }
+
+    public function insertIntoCache(): bool
+    {
+        // TODO: Implement insertIntoCache() method.
     }
 }
