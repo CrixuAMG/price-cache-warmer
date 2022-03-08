@@ -6,7 +6,7 @@ use CrixuAMG\PriceCacheWarmer\Exceptions\DriverDoesNotExistException;
 use CrixuAMG\PriceCacheWarmer\Exceptions\InvalidDriverException;
 use CrixuAMG\PriceCacheWarmer\Templates\Laravel\LaravelDriver;
 use CrixuAMG\PriceCacheWarmer\Templates\Magento2\Magento2Driver;
-use Illuminate\Support\Traits\Macroable;
+use CrixuAMG\PriceCacheWarmer\Traits\Macroable;
 
 class TemplateDriverManager
 {

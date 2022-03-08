@@ -5,75 +5,77 @@ namespace CrixuAMG\PriceCacheWarmer;
 use CrixuAMG\PriceCacheWarmer\Contracts\TemplateDriverContract;
 use CrixuAMG\PriceCacheWarmer\Templates\TemplateDriverManager;
 
+/**
+ *
+ */
 class PriceCacheWarmer
 {
+    /**
+     * @var
+     */
     public $driver;
-    public $validUntil;
-    public $priceInclVat;
-    public $priceExclVat;
-    public $vatPrice;
 
-    public static function create()
+    /**
+     * @return PriceCacheWarmer
+     */
+    public static function getInstance(): PriceCacheWarmer
     {
         return new self;
     }
 
-    public function withDriver(string $driver)
+    /**
+     * @param  string  $driver
+     * @return PriceCacheWarmer
+     * @throws Exceptions\DriverDoesNotExistException
+     */
+    public static function withDriver(string $driver)
     {
-        $this->driver = TemplateDriverManager::driver($driver);
+        $instance = self::getInstance();
+
+        $instance->driver = TemplateDriverManager::driver($driver);
+
+        return $instance;
+    }
+
+    /**
+     * @param $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        return $this->driver->$name;
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     * @return $this
+     */
+    public function __set($name, $value)
+    {
+        $this->driver->$name = $value;
 
         return $this;
     }
 
-    public function setDriver(TemplateDriverContract $driver)
+    /**
+     * @param $name
+     * @param $arguments
+     * @return $this|void
+     */
+    public function __call($name, $arguments)
     {
-        $this->driver = $driver;
+        if (is_callable([$this->driver, $name])) {
+            $this->driver->$name(...$arguments);
 
-        return $this;
+            return $this;
+        }
     }
 
-    public function setItem($item)
-    {
-        $this->driver->setItem($item);
-
-        return $this;
-    }
-
-    public function setTarget($target)
-    {
-        $this->driver->setTarget($target);
-
-        return $this;
-    }
-
-    public function cacheIsValidTill(\DateTime $validUntil = null)
-    {
-        $this->validUntil = $validUntil;
-
-        return $this;
-    }
-
-    public function setPriceIncludingVat($price)
-    {
-        $this->priceInclVat = $price;
-
-        return $this;
-    }
-
-    public function setPriceExcludingVat($price)
-    {
-        $this->priceExclVat = $price;
-
-        return $this;
-    }
-
-    public function setVatPrice($price)
-    {
-        $this->vatPrice = $price;
-
-        return $this;
-    }
-
+    /**
+     * @param  callable  $callable
+     * @return mixed
+     */
     public function cache(callable $callable)
     {
         return $this->driver->cache($this, $callable);

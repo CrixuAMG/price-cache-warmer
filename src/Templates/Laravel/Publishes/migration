@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreatePriceCacheTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('price_cache', function (Blueprint $table) {
+            $table->id();
+            $table->string('item_type');
+            $table->string('item_id');
+            $table->string('target_type')->nullable();
+            $table->string('target_id')->nullable();
+            $table->double('price_excl_vat')->nullable();
+            $table->double('price_incl_vat')->nullable();
+            $table->double('price_vat')->nullable();
+            $table->dateTime('valid_until');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('price_cache');
+    }
+}

@@ -8,7 +8,13 @@ interface TemplateDriverContract
 {
     // TODO: publish migrations/db_schemes, create default cache/other logic methods
 
-    public function cache(PriceCacheWarmer $priceCacheWarmer, callable $callback): void;
+    public function cache(PriceCacheWarmer $priceCacheWarmer, callable $callback);
 
     public function fetchFromCache();
+
+    public function insertIntoCache(): bool;
+
+    public function getMigrationName(): string;
+
+    public function getMigrationPath(): string;
 }
